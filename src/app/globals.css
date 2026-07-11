@@ -1,24 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #10241f;
-  --ink-soft: #1c3a32;
-  --foam: #f3efe4;
-  --foam-dim: #d9d2c0;
-  --citrus: #e8ff4d;
-  --citrus-deep: #c6db2a;
-  --coral: #ff6b4a;
-  --mist: rgba(243, 239, 228, 0.72);
-  --font-display: var(--font-syne);
-  --font-body: var(--font-literata);
-  --font-tiles: var(--font-plex-mono);
+  --white: #ffffff;
+  --black: #1a1a1a;
+  --gray-50: #f5f5f5;
+  --gray-100: #e8e8e8;
+  --gray-400: #a0a0a0;
+  --gray-600: #666666;
+  --green-primary: #05a854;
+  --green-hover: #048849;
+  --green-light: #f0fdf4;
+  --red: #d94043;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "SF Mono", "Monaco", monospace;
 }
 
 @theme inline {
-  --color-background: var(--ink);
-  --color-foreground: var(--foam);
+  --color-background: var(--white);
+  --color-foreground: var(--black);
   --font-sans: var(--font-body);
-  --font-mono: var(--font-tiles);
+  --font-mono: var(--font-mono);
 }
 
 * {
@@ -32,29 +34,9 @@ body {
 
 body {
   margin: 0;
-  color: var(--foam);
-  background:
-    radial-gradient(1200px 700px at 12% -10%, rgba(232, 255, 77, 0.16), transparent 55%),
-    radial-gradient(900px 600px at 100% 0%, rgba(255, 107, 74, 0.12), transparent 50%),
-    linear-gradient(160deg, #0c1f1a 0%, var(--ink) 45%, #14352c 100%);
-  font-family: var(--font-body), Georgia, serif;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.18;
-  background-image:
-    repeating-linear-gradient(
-      -18deg,
-      transparent 0,
-      transparent 11px,
-      rgba(243, 239, 228, 0.05) 11px,
-      rgba(243, 239, 228, 0.05) 12px
-    );
-  z-index: 0;
+  color: var(--black);
+  background: var(--white);
+  font-family: var(--font-body);
 }
 
 .page {
@@ -63,121 +45,127 @@ body::before {
   min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: 2rem 1.25rem 3rem;
+  padding: 1.5rem;
+  background: var(--gray-50);
 }
 
 .game-shell {
-  width: min(100%, 34rem);
+  width: min(100%, 28rem);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .brand-block {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.5rem;
 }
 
 .brand {
   margin: 0;
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(2.4rem, 8vw, 3.6rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-  color: var(--citrus);
-  animation: brand-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--black);
 }
 
 .headline {
   margin: 0;
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: clamp(1.35rem, 4vw, 1.75rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--foam);
-  animation: rise-in 650ms 80ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--gray-600);
 }
 
 .subhead {
   margin: 0;
-  max-width: 28rem;
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: var(--mist);
-  animation: rise-in 650ms 140ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  max-width: 24rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--gray-400);
 }
 
 .board {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.65rem;
-  margin-top: 0.35rem;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  background: var(--gray-50);
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .tile {
   aspect-ratio: 1;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(243, 239, 228, 0.18);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 40%),
-    var(--ink-soft);
-  color: var(--foam);
-  font-family: var(--font-tiles), ui-monospace, monospace;
-  font-size: clamp(1.6rem, 7vw, 2.2rem);
+  border: 1px solid var(--gray-100);
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-mono);
+  font-size: 1.375rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.25);
-  animation: tile-pop 520ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  letter-spacing: 0.05em;
+  border-radius: 6px;
+  animation: tile-pop 400ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
 }
 
 .board.is-shaking {
-  animation: shake 420ms ease-in-out;
+  animation: shake 350ms ease-in-out;
 }
 
 .meta-row {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.75rem 1.25rem;
-  min-height: 2.5rem;
+  gap: 0.75rem 1rem;
+  min-height: 2rem;
 }
 
 .guesses {
   margin: 0;
-  color: var(--foam-dim);
-  font-size: 0.98rem;
+  color: var(--gray-600);
+  font-size: 0.9375rem;
+  font-weight: 500;
 }
 
 .guesses strong {
-  color: var(--citrus);
-  font-family: var(--font-tiles), ui-monospace, monospace;
+  color: var(--green-primary);
+  font-family: var(--font-mono);
   font-weight: 600;
 }
 
 .clue {
   margin: 0;
   flex: 1 1 12rem;
-  color: var(--foam);
-  font-size: 1rem;
-  line-height: 1.45;
-  animation: rise-in 400ms ease both;
+  color: var(--black);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  animation: rise-in 350ms ease both;
 }
 
 .clue-label {
   display: inline-block;
-  margin-right: 0.55rem;
-  padding: 0.1rem 0.45rem;
-  border: 1px solid rgba(232, 255, 77, 0.35);
-  color: var(--citrus);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 0.72rem;
+  margin-right: 0.35rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--green-light);
+  background: var(--green-light);
+  color: var(--green-primary);
+  font-family: var(--font-display);
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  border-radius: 3px;
   vertical-align: 0.1em;
 }
 
@@ -185,11 +173,11 @@ body::before {
   appearance: none;
   border: none;
   background: transparent;
-  color: var(--citrus);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  color: var(--green-primary);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
   text-decoration: underline;
   text-underline-offset: 0.2em;
   cursor: pointer;
@@ -202,62 +190,63 @@ body::before {
 }
 
 .text-btn:hover:not(:disabled) {
-  color: var(--citrus-deep);
+  color: var(--green-hover);
 }
 
 .guess-form,
 .result-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .guess-input {
-  flex: 1 1 12rem;
-  min-height: 3.25rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid rgba(243, 239, 228, 0.22);
-  background: rgba(16, 36, 31, 0.65);
-  color: var(--foam);
-  font-family: var(--font-tiles), ui-monospace, monospace;
-  font-size: 1.15rem;
-  letter-spacing: 0.18em;
+  flex: 1 1 10rem;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--gray-100);
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   outline: none;
   transition: border-color 160ms ease, box-shadow 160ms ease;
+  border-radius: 6px;
 }
 
 .guess-input::placeholder {
-  color: rgba(217, 210, 192, 0.45);
-  letter-spacing: 0.04em;
+  color: var(--gray-400);
+  letter-spacing: 0.03em;
   text-transform: none;
-  font-family: var(--font-body), Georgia, serif;
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
 }
 
 .guess-input:focus {
-  border-color: rgba(232, 255, 77, 0.7);
-  box-shadow: 0 0 0 3px rgba(232, 255, 77, 0.15);
+  border-color: var(--green-primary);
+  box-shadow: 0 0 0 2px rgba(5, 168, 84, 0.1);
 }
 
 .primary-btn {
   appearance: none;
-  min-height: 3.25rem;
-  padding: 0.85rem 1.35rem;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.125rem;
   border: none;
-  background: var(--citrus);
-  color: var(--ink);
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  background: var(--green-primary);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
   cursor: pointer;
-  transition: transform 140ms ease, background 140ms ease;
+  transition: background 140ms ease;
+  border-radius: 6px;
 }
 
 .primary-btn:hover {
-  background: var(--citrus-deep);
-  transform: translateY(-1px);
+  background: var(--green-hover);
 }
 
 .primary-btn:active {
@@ -267,22 +256,24 @@ body::before {
 .feedback {
   margin: 0;
   min-height: 1.5rem;
-  color: var(--foam-dim);
-  font-size: 1.02rem;
+  color: var(--gray-600);
+  font-size: 0.9375rem;
+  line-height: 1.4;
 }
 
 .feedback.is-win {
-  color: var(--citrus);
-  animation: rise-in 350ms ease both;
+  color: var(--green-primary);
+  font-weight: 500;
+  animation: rise-in 300ms ease both;
 }
 
 .feedback.is-loss {
-  color: #ffb4a3;
+  color: var(--red);
 }
 
 .loading-copy {
   margin: 0;
-  color: var(--mist);
+  color: var(--gray-400);
 }
 
 .sr-only {
@@ -295,19 +286,6 @@ body::before {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-@keyframes brand-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.98);
-    filter: blur(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
 }
 
 @keyframes rise-in {
