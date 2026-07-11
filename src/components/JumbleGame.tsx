@@ -182,7 +182,7 @@ export default function JumbleGame() {
           <span className="words-left"> · {wordsLeft} new words left</span>
         </p>
         {showClue ? (
-          <p className={`clue ${difficulty !== "easy" ? "is-emoji" : ""}`}>
+          <p className="clue">
             <span className="clue-label">Clue</span>
             {clueForWord(round.puzzle.word, difficulty)}
           </p>

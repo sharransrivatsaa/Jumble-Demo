@@ -214,11 +214,6 @@ body {
   animation: rise-in 350ms ease both;
 }
 
-.clue.is-emoji {
-  font-size: 1.75rem;
-  line-height: 1.5;
-  letter-spacing: 0.15em;
-}
 
 .clue-label {
   display: inline-block;

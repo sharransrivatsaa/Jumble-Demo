@@ -1,4 +1,4 @@
-import { getEmojiClue } from "./emoji-clues";
+import { TEXT_CLUES } from "../data/text-clues";
 
 export type Puzzle = {
   word: string;
@@ -78,14 +78,14 @@ export const CLUE_OVERRIDES: Record<string, string> = {
   STONE: "Hard piece of rock",
 };
 
-export function clueForWord(word: string, difficulty: Difficulty): string {
-  if (difficulty === "easy") {
-    return (
-      CLUE_OVERRIDES[word] ??
-      `A common five-letter word that starts with "${word[0]}".`
-    );
+export function clueForWord(word: string, _difficulty?: Difficulty): string {
+  if (CLUE_OVERRIDES[word]) {
+    return CLUE_OVERRIDES[word];
   }
-  return getEmojiClue(word);
+  if (TEXT_CLUES[word]) {
+    return TEXT_CLUES[word];
+  }
+  return `A five-letter word starting with "${word[0]}".`;
 }
 
 export function scrambleWord(word: string): string {
